@@ -100,10 +100,3 @@ curl localhost:8000/api/blockchain/verify    # valid:false, first_invalid_idx:5
 The Audit trail tab turns red at the broken record. A hash chain cannot detect deletion of the newest records on its own, so
 periodically save the `head_hash` from `/api/blockchain/verify` somewhere outside the database (a log, a ticket, a signed commit).
 
-## Limitations
-
-- The demo and initial training data are synthetic; the Isolation Forests flag statistical outliers relative to that
-  distribution, not proven ESG misconduct or confirmed cyber incidents. Retrain on your own data before relying on scores.
-- Sector features (industry-normalised composite, sector-relative position) are computed within each scored batch, so very
-  small sectors fall back to global statistics.
-- The ledger is tamper-*evident*, not tamper-proof: anyone with database write access can rewrite the whole chain unless the head hash is anchored externally.
