@@ -57,8 +57,8 @@ def validate_frame(df: pd.DataFrame) -> Tuple[Optional[pd.DataFrame], List[str]]
     if missing:
         return None, [f"Missing required columns: {', '.join(missing)}"]
     errors: List[str] = []
-    if len(df) < 20:
-        errors.append(f"At least 20 companies are required for stable scoring (found {len(df)}).")
+    if len(df) < 3:
+        errors.append(f"At least 3 companies are required for stable scoring (found {len(df)}).")
     if len(df) > 20000:
         errors.append("At most 20,000 rows are supported per upload.")
 
