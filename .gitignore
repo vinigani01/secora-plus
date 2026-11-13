@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+dist/
+secora.db
+.env
+backend/models/*.joblib
+backend/models/manifest.json
+# Commit backend/data/fallback_results.json (the stale-result fallback) but not raw scrape output
