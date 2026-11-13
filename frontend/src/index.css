@@ -2,11 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
-html { background: #EDF1EE; }
-body { @apply font-sans text-ink antialiased; }
+/* Colour tokens are RGB triplets so Tailwind opacity modifiers (bg-ink/10) keep working. */
+:root {
+  color-scheme: light;
+  --paper: 243 246 244;
+  --panel: 255 255 255;
+  --sunk: 234 239 236;
+  --ink: 16 36 31;
+  --moss: 84 104 98;
+  --rule: 218 226 222;
+  --shadow: 16 36 31;
+  --brand: 15 118 110;
+  --brand-soft: 214 238 234;
+  --brand-fg: 13 94 88;
+  --low: 47 143 131;      --low-soft: 218 239 235;      --low-fg: 22 105 95;
+  --medium: 214 162 52;   --medium-soft: 251 241 214;   --medium-fg: 133 92 8;
+  --high: 217 98 43;      --high-soft: 252 229 216;     --high-fg: 168 64 18;
+  --critical: 176 36 58;  --critical-soft: 247 222 226; --critical-fg: 150 26 46;
+}
+
+.dark {
+  color-scheme: dark;
+  --paper: 9 16 14;
+  --panel: 16 26 23;
+  --sunk: 22 35 31;
+  --ink: 229 238 235;
+  --moss: 142 162 155;
+  --rule: 38 54 49;
+  --shadow: 0 0 0;
+  --brand: 45 196 176;
+  --brand-soft: 17 52 47;
+  --brand-fg: 110 226 208;
+  --low: 52 168 152;      --low-soft: 18 46 41;      --low-fg: 112 214 198;
+  --medium: 226 179 72;   --medium-soft: 52 41 15;   --medium-fg: 240 200 110;
+  --high: 236 120 66;     --high-soft: 58 32 18;     --high-fg: 248 156 112;
+  --critical: 232 84 104; --critical-soft: 60 21 29; --critical-fg: 250 140 156;
+}
+
+html { background: rgb(var(--paper)); }
+body { @apply bg-paper font-sans text-ink antialiased; }
 h1, h2, h3 { @apply font-display; }
-:focus-visible { outline: 2px solid #14302B; outline-offset: 2px; }
+:focus-visible { outline: 2px solid rgb(var(--brand)); outline-offset: 2px; border-radius: 4px; }
+::selection { background: rgb(var(--brand) / 0.25); }
+
+@layer components {
+  .card { @apply rounded-2xl border border-rule bg-panel shadow-card; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply btn bg-ink text-paper hover:bg-ink/85; }
+  .btn-brand { @apply btn bg-brand text-white hover:bg-brand/90 dark:text-paper; }
+  .btn-outline { @apply btn border border-rule bg-panel text-ink hover:border-ink/40 hover:bg-sunk; }
+  .btn-ghost { @apply btn text-moss hover:bg-sunk hover:text-ink; }
+  .field { @apply rounded-lg border border-rule bg-panel px-3 py-2 text-sm text-ink placeholder:text-moss/70 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20; }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.14em] text-brand-fg; }
+  .skeleton { @apply rounded-lg bg-sunk; background-image: linear-gradient(90deg, transparent 0, rgb(var(--panel) / 0.6) 50%, transparent 100%); background-size: 400px 100%; background-repeat: no-repeat; @apply animate-shimmer; }
+  .scrollbar-thin { scrollbar-width: thin; scrollbar-color: rgb(var(--rule)) transparent; }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
