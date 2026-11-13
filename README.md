@@ -4,13 +4,7 @@
 
 SECORA scores companies on two kinds of risk at once: what their ESG disclosures look like, and what their cyber incident history looks like. Two independent Isolation Forests flag anomalies in each domain, a power mean combines them into one 0-100 risk score, and every score is written to a SHA-256 hash-chained audit ledger, so any later edit to a stored result can be detected.
 
-![SECORA landing page](docs/screenshots/landing.png)
-
-| Dashboard | Flagged-company inspector |
-|---|---|
-| ![Dashboard overview](docs/screenshots/dashboard.png) | ![Inspector with feature z-scores](docs/screenshots/inspector.png) |
-| **Audit trail after tampering** | **Phone, dark mode** |
-| ![Audit trail detecting an edited record](docs/screenshots/audit-tampered.png) | <img src="docs/screenshots/phone-dark.png" alt="Dashboard on a phone in dark mode" width="260"> |
+Live at: https://secora-rpaz.onrender.com
 
 ## Contents
 
