@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.venv/
+secora.db
+models/*.joblib
+models/manifest.json
