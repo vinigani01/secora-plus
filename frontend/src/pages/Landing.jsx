@@ -187,9 +187,7 @@ GET  /api/blockchain/verify`}</pre>
           · Secure ESG and Cyber Operations Risk Analyzer
         </div>
     
-        <div className="flex flex-wrap items-center gap-4">
-          <p>FastAPI · scikit-learn · PostgreSQL · React</p>
-    
+        <div className="flex flex-wrap items-center gap-4">  
           <a
             href="https://github.com/vinigani01/secora-plus"
             target="_blank"
