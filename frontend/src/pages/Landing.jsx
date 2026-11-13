@@ -179,12 +179,30 @@ GET  /api/blockchain/verify`}</pre>
         </div>
       </section>
 
-      <footer className="border-t border-rule">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 px-4 py-8 text-sm text-moss sm:flex-row sm:items-center sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2"><Logo className="h-6 w-6" /><span className="font-semibold text-ink">SECORA</span> · Secure ESG and Cyber Operations Risk Analyzer</div>
-          <p>FastAPI · scikit-learn · PostgreSQL · React</p>
+    <footer className="border-t border-rule">
+      <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 px-4 py-8 text-sm text-moss sm:flex-row sm:items-center sm:px-6 lg:px-8">
+        <div className="flex items-center gap-2">
+          <Logo className="h-6 w-6" />
+          <span className="font-semibold text-ink">SECORA</span>
+          · Secure ESG and Cyber Operations Risk Analyzer
         </div>
-      </footer>
+    
+        <div className="flex flex-wrap items-center gap-4">
+          <p>FastAPI · scikit-learn · PostgreSQL · React</p>
+    
+          <a
+            href="https://github.com/vinigani01/secora-plus"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 transition-colors hover:text-brand-fg"
+          >
+            <Icon.github className="h-4 w-4" />
+            GitHub Repository
+          </a>
+        </div>
+      </div>
+    </footer>
+      
     </div>
   );
 }
