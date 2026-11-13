@@ -233,13 +233,6 @@ The ledger badge turns red, and the Audit trail tab highlights record 5 as the f
 
 To see the fallback path, change one byte of `backend/models/esg_detector.joblib` and restart the backend. The model then fails its manifest check, and **Run analysis again** serves the committed results with a stale-results banner.
 
-## Limitations
-
-- The demo and initial training data are synthetic. The Isolation Forests flag statistical outliers relative to that data, not proven ESG misconduct or confirmed cyber incidents. Retrain on your own data before relying on the scores.
-- Sector features (industry-normalised composite, sector-relative position) are computed within each scored batch, so very small sectors fall back to global statistics.
-- The ledger is tamper-evident, not tamper-proof. Anyone with write access to the database can rewrite the whole chain, and verification will still pass, unless the head hash is also stored somewhere outside the database. Deleting the newest records is also undetectable without such an external copy.
-- The write endpoints (`/api/upload`, `/api/demo`, `/api/analyze`) have no authentication. Add an API key before exposing a public deployment.
-
 ## Roadmap
 
 [FEATURE_IDEAS.md](FEATURE_IDEAS.md) lists 11 additions that fit the current design, with effort estimates and the files each one touches. Among them: anchoring the ledger head hash outside the database, API-key protection, results export, run-to-run comparison, what-if sliders for α and p, and a data-drift warning.
