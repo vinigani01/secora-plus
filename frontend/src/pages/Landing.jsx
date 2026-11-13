@@ -196,7 +196,7 @@ GET  /api/blockchain/verify`}</pre>
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 transition-colors hover:text-brand-fg"
           >
-            GitHub Repository
+            GitHub Repository ↗
           </a>
         </div>
       </div>
