@@ -19,7 +19,6 @@ Live at: https://secora-rpaz.onrender.com
 - [API reference](#api-reference)
 - [CSV format](#csv-format)
 - [Demonstrating tamper detection](#demonstrating-tamper-detection)
-- [Limitations](#limitations)
 - [Roadmap](#roadmap)
 
 ## Features
