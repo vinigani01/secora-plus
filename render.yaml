@@ -21,7 +21,7 @@ services:
           property: connectionString
       # Must equal the frontend's public URL. If Render appended a suffix to the name, update it.
       - key: CORS_ORIGINS
-        value: https://secora-frontend.onrender.com
+        value: https://secora-frontend-abc.onrender.com
 
   - type: web
     name: secora-frontend
@@ -32,4 +32,4 @@ services:
     envVars:
       # Must equal the backend's public URL (no trailing slash). Update if the name got a suffix.
       - key: API_BASE_URL
-        value: https://secora-backend.onrender.com
+        value: https://secora-backend-abc.onrender.com
