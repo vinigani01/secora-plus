@@ -27,3 +27,31 @@ export function heat(value) {
 }
 
 export const short = (h, n = 10) => (h ? `${h.slice(0, n)}…${h.slice(-4)}` : "-");
+
+export const levelLabel = (l) => LEVEL_LABEL[l] ?? l;
+
+// Full class strings so Tailwind's scanner keeps them.
+export const LEVEL_CLASS = {
+  LOW: { chip: "bg-low-soft text-low-fg ring-low/30", dot: "bg-low", text: "text-low-fg", bar: "bg-low" },
+  MEDIUM: { chip: "bg-medium-soft text-medium-fg ring-medium/30", dot: "bg-medium", text: "text-medium-fg", bar: "bg-medium" },
+  HIGH: { chip: "bg-high-soft text-high-fg ring-high/30", dot: "bg-high", text: "text-high-fg", bar: "bg-high" },
+  CRITICAL: { chip: "bg-critical-soft text-critical-fg ring-critical/30", dot: "bg-critical", text: "text-critical-fg", bar: "bg-critical" },
+};
+
+// Mirrors RISK_BANDS in backend/app/config.py (LOW < 25, MEDIUM < 45, HIGH < 65, CRITICAL >= 65).
+export const BANDS = [
+  { level: "LOW", from: 0, to: 25 },
+  { level: "MEDIUM", from: 25, to: 45 },
+  { level: "HIGH", from: 45, to: 65 },
+  { level: "CRITICAL", from: 65, to: 100 },
+];
+export const bandFor = (r) => (r >= 65 ? "CRITICAL" : r >= 45 ? "HIGH" : r >= 25 ? "MEDIUM" : "LOW");
+
+// R = (alpha * sE^p + (1 - alpha) * sC^p)^(1/p), scaled to 0-100.
+export const powerMean = (sE, sC, alpha = 0.5, p = 3) => 100 * Math.pow(alpha * sE ** p + (1 - alpha) * sC ** p, 1 / p);
+
+export const fmtTime = (t) => {
+  if (!t) return "-";
+  const d = new Date(t.endsWith("Z") || /[+-]\d\d:\d\d$/.test(t) ? t : `${t}Z`);
+  return Number.isNaN(d.getTime()) ? t : d.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
+};
